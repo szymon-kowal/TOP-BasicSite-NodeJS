@@ -11,10 +11,13 @@ function dynamicUrl(url, res) {
 
 	console.log('Serving:', filePath); // Debugging line
 
-	let extName = path.extname(filePath) ? path.extname(filePath) : '.html';
+	let extName = path.extname(filePath);
 
-	filePath = filePath + extName;
+	if (!extName) {
+		filePath += '.html';
+	}
 
+	console.log('file path: ', filePath);
 	let contentType = 'text/html';
 
 	switch (extName) {
